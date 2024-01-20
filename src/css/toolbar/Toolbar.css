@@ -1,0 +1,62 @@
+.toolbar{
+    width: auto;
+    height: 50px;
+    background-color: rgb(229, 229, 229);
+    top: 10px;
+    left: 0;
+    display: grid;
+    grid-template-columns: 10% 10% 34% 18% 18%;
+    gap: 2%;
+    padding: 15px;
+    border-radius: 3px;
+}
+
+.play-all-button {
+    position: relative;
+}
+
+.add-all-button {
+    position: relative;
+}
+
+.filter-input-field {
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.track-number-button {
+    position: relative;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.play-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+.add-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.button-description{
+    display: inline-block;
+}
+
+.options {
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.down-arrow-icon {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.up-arrow-icon {
+    display: inline-block;
+}
