@@ -13,8 +13,6 @@
     color: black;
     border: 0px;
     border-radius: 50%;
-    left: 50%;
-    right: 50%;
     position: relative;
     right: 0;
 }
@@ -29,4 +27,8 @@
 
 .artist-name {
     width: 100%;
+}
+
+.error {
+    color: rgb(255, 93, 93);
 }
