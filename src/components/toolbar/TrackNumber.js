@@ -5,13 +5,15 @@ import { faArrowDown, faArrowUp, faCaretDown } from "@fortawesome/free-solid-svg
 
 export default function TrackNumber(props) {
     return (
-        <button className="track-number-button">
-            <FontAwesomeIcon icon={faArrowUp} size="lg" className="up-arrow-icon" />
-            <FontAwesomeIcon icon={faArrowDown} size="lg" className="down-arrow-icon" />
-            <p className="button-description">Track Number</p>
-            <button className="options">
+        <div className="track-number-button btn-group" role="group">
+            <button className="button-description btn btn-light">
+                <FontAwesomeIcon icon={faArrowUp} size="lg" className="up-arrow-icon" />
+                <FontAwesomeIcon icon={faArrowDown} size="lg" className="down-arrow-icon" />
+                <b>Track Number</b>
+            </button>
+            <button className="options btn btn-light">
                 <FontAwesomeIcon icon={faCaretDown}/>
             </button>
-        </button>
+        </div>
     );
 }

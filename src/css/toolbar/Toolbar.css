@@ -1,22 +1,24 @@
 .toolbar{
     width: auto;
-    height: 50px;
+    height: auto;
     background-color: rgb(229, 229, 229);
     top: 10px;
     left: 0;
     display: grid;
-    grid-template-columns: 10% 10% 34% 18% 18%;
-    gap: 2%;
+    grid-template-columns: 12% 12% 36% 20% 18%;
     padding: 15px;
     border-radius: 3px;
+    gap: 4px;
 }
 
 .play-all-button {
     position: relative;
+    border-radius: 7px;
 }
 
 .add-all-button {
     position: relative;
+    border-radius: 7px;
 }
 
 .filter-input-field {
@@ -28,11 +30,12 @@
     position: relative;
     grid-column-start: 4;
     grid-column-end: 5;
+    border-radius: 7px;
 }
 
 .play-icon {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 .add-icon {
     display: inline-block;
@@ -41,6 +44,7 @@
 
 .button-description{
     display: inline-block;
+    padding: auto;
 }
 
 .options {
@@ -50,6 +54,12 @@
     position: absolute;
     right: 0;
     top: 0;
+    bottom: 0;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
 }
 
 .down-arrow-icon {

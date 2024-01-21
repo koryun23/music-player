@@ -5,12 +5,11 @@ import { faCaretDown, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 export default function PlayAll(props) {
     return (
-        <button className="play-all-button">
-            <FontAwesomeIcon icon={faPlay} size="lg" className="play-icon"/>
-            <p className="button-description">Play All</p>
-            <button className="options">
+        <div className="play-all-button btn-group" role="group">
+            <button className="button-description btn btn-light"><FontAwesomeIcon icon={faPlay} size="lg" className="play-icon"/><b>Play All</b></button>
+            <button className="options btn btn-light">
                 <FontAwesomeIcon icon={faCaretDown}/>
             </button>
-        </button>
+        </div>
     );
 }

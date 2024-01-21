@@ -1,0 +1,32 @@
+.music-upload-form {
+    background-color: white;
+    margin: auto;
+    margin-top: 10px;
+    width: 30%;
+    height: auto;
+}
+
+.music-upload-button {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(229, 229, 229);
+    color: black;
+    border: 0px;
+    border-radius: 50%;
+    left: 50%;
+    right: 50%;
+    position: relative;
+    left: 0;
+}
+
+.file-name {
+    width: 100%;
+}
+
+.song-name {
+    width: 100%;
+}
+
+.artist-name {
+    width: 100%;
+}
