@@ -45,7 +45,13 @@ export default function MusicUploadForm(props) {
                        onChange={changeArtistName}
                        value={artistName}/>
             </div>
-            <MusicUploadButton />
+            <div className="form form-group">
+                <input type="submit"
+                       name="submit"
+                       className="btn btn-submit" 
+                       value="Choose File"/>
+                <MusicUploadButton />
+            </div>
         </form>
 
     );
