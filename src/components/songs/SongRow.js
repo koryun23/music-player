@@ -8,6 +8,7 @@ export default function SongRow(props) {
     const [songName, setSongName] = useState(props.songName);
     const [artistName, setArtistName] = useState(props.artistName);
     const [trackNumber, setTrackNumber] = useState(props.trackNumber);
+    const [fileName, setFileName] = useState(props.fileName);
 
     return (
         <div className="song-row">
@@ -15,7 +16,7 @@ export default function SongRow(props) {
                 <button className="dots">
                     <FontAwesomeIcon icon={faGrip}/>
                 </button>
-                <button className="play">
+                <button className="play" onClick={() => props.onPlaySingle(fileName)}>
                     <FontAwesomeIcon icon={faPlay}/>
                 </button>
             </div>

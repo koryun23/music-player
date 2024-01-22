@@ -5,7 +5,7 @@ import { faAdd, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function MusicUploadButton(props) {
     return (
-        <button className="music-upload-button">
+        <button className="music-upload-button" onClick={props.onAddSongToPlaylist}>
             <FontAwesomeIcon icon={faPlus} size="lg"/>
         </button>   
     );

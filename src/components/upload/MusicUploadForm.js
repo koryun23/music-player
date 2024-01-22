@@ -20,6 +20,7 @@ export default function MusicUploadForm(props) {
     }
 
     const changeSelectedFile = (event) => {
+        console.log(event.target.files);
         let enteredFileName = event.target.value;
         enteredFileName = enteredFileName.slice(enteredFileName.lastIndexOf("\\") + 1);
         let format = enteredFileName.slice(enteredFileName.lastIndexOf("."));
@@ -28,6 +29,7 @@ export default function MusicUploadForm(props) {
         }
         setFileName(enteredFileName);
         setErrorMessages([]);
+        props.onUploadSong(event);
     }
 
     return (
@@ -65,8 +67,8 @@ export default function MusicUploadForm(props) {
                 <input type="file"
                        name="submit"
                        className="btn btn-submit" 
-                       onChange={changeSelectedFile}/>
-                <MusicUploadButton />
+                       onChange={(event) => changeSelectedFile(event)}/>
+                <MusicUploadButton onAddSongToPlaylist={(event) => props.onAddSongToPlaylist(event, songName, artistName, fileName)}/>
             </div>
         </form>
 

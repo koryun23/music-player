@@ -2,16 +2,6 @@ import "../../css/songs/SongList.css";
 import { React, useState } from "react";
 import SongRow from "./SongRow";
 export default function SongList(props) {
-
-    const [songList, setSongList] = useState([
-        {songName: "Halo", artistName: "Blackbird Blackbird", trackNumber: 1},
-        {songName: "Halo", artistName: "Blackbird Blackbird", trackNumber: 2},
-        {songName: "Halo", artistName: "Blackbird Blackbird", trackNumber: 3},
-        {songName: "Halo", artistName: "Blackbird Blackbird", trackNumber: 4},
-        {songName: "Halo", artistName: "Blackbird Blackbird", trackNumber: 5},
-        {songName: "Halo", artistName: "Blackbird Blackbird", trackNumber: 6},
-        {songName: "Halo", artistName: "Blackbird Blackbird", trackNumber: 7}
-    ]);
     
     return (
         <div className="song-list">
@@ -22,10 +12,12 @@ export default function SongList(props) {
                 <div className="top-col">Track</div>
                 <div className="top-col"></div>
             </div>
-            {songList.map(song => (
+            {props.songList.map(song => (
                 <SongRow songName={song.songName}
                          artistName={song.artistName} 
-                         trackNumber={song.trackNumber} />
+                         trackNumber={song.trackNumber} 
+                         fileName={song.fileName}
+                         onPlaySingle={(fileName) => props.onPlaySingle(fileName)}/>
             ))}
         </div>
     );
