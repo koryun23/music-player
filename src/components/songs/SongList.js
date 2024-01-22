@@ -17,7 +17,8 @@ export default function SongList(props) {
                          artistName={song.artistName} 
                          trackNumber={song.trackNumber} 
                          fileName={song.fileName}
-                         onPlaySingle={(fileName) => props.onPlaySingle(fileName)}/>
+                         onPlaySingle={(fileName) => props.onPlaySingle(fileName)}
+                         isPlaying={props.isPlaying && props.fileName == song.fileName}/>
             ))}
         </div>
     );

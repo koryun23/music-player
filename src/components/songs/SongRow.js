@@ -1,7 +1,7 @@
 import { React, useState} from "react";
 import "../../css/songs/SongList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCheck, faForward, faGrip, faHeart, faPlay, faReply, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCheck, faForward, faGrip, faHeart, faPause, faPlay, faReply, faShare } from "@fortawesome/free-solid-svg-icons";
 
 export default function SongRow(props) {
 
@@ -17,7 +17,10 @@ export default function SongRow(props) {
                     <FontAwesomeIcon icon={faGrip}/>
                 </button>
                 <button className="play" onClick={() => props.onPlaySingle(fileName)}>
-                    <FontAwesomeIcon icon={faPlay}/>
+                    {
+                        (props.isPlaying && <FontAwesomeIcon icon={faPause}/>) ||
+                        (<FontAwesomeIcon icon={faPlay}/>)
+                    }
                 </button>
             </div>
             <div className="song-name col">

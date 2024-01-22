@@ -5,14 +5,16 @@ import SongList from "./songs/SongList";
 import MusicUploadForm from "./upload/MusicUploadForm";
 import { useState } from "react";
 
+var currentAudio = null;
 export default function MusicPlayer(props) {
     
-    const [audioObjects, setAudioObjects] = useState([]);
     const [uploadedFiles, setUploadedFiles] = useState([]);
 
     const [songList, setSongList] = useState([]);
     const [currentQueue, setCurrentQueue] = useState([]);
     
+    const [currentSong, setCurrentSong] = useState("");
+    const [isPlaying, setIsPlaying] = useState(false);
 
     const onPlayAll = () => {};
     
@@ -39,23 +41,39 @@ export default function MusicPlayer(props) {
 
     const onPlaySingle = (fileName) => {
         console.log("playing a single track");
-        setCurrentSong(fileName);
         console.log(uploadedFiles);
-        console.log(audioObjects);
-        for(let i = 0; i < uploadedFiles.length; i++) {
-            console.log(uploadedFiles[i]);
-            if(uploadedFiles[i].name.includes(fileName)) {
-                new Audio(URL.createObjectURL(uploadedFiles[i])).play();
-                return;
+        if(currentSong === fileName) {
+            if(currentAudio.paused){
+                currentAudio.play();
+                setIsPlaying(true);
+            } else {
+                currentAudio.pause();
+                setIsPlaying(false);
+            }
+        } else {
+            if(currentAudio) {
+                currentAudio.pause();
+            }
+            setIsPlaying(false);
+            for(let i = 0; i < uploadedFiles.length; i++) {
+                console.log(uploadedFiles[i]);
+                if(uploadedFiles[i].name.includes(fileName)) {
+                    currentAudio = new Audio(URL.createObjectURL(uploadedFiles[i]));
+                    currentAudio.play();
+                    setIsPlaying(true);
+                    setCurrentSong(fileName);
+                    return;
+                }
             }
         }
-        console.log(currentSong);
+
     }
 
-    const [currentSong, setCurrentSong] = useState("");
-
-
     const onUploadSong = (event) => {
+        if(currentAudio) {
+            currentAudio.pause();
+            setIsPlaying(false);
+        }
         const lastUploadedFile = event.target.files[event.target.files.length - 1];
         pushNewFile(lastUploadedFile);
     }
@@ -77,7 +95,9 @@ export default function MusicPlayer(props) {
                       onFilter={onFilter} />
              <SongList songList={songList} 
                        currentQueue={currentQueue} 
-                       onPlaySingle={(fileName) => onPlaySingle(fileName)} />
+                       onPlaySingle={(fileName) => onPlaySingle(fileName)} 
+                       fileName={currentSong}
+                       isPlaying={isPlaying}/>
              <MusicUploadForm onAddSongToPlaylist={(event, songName, artistName, fileName) => onAddSongToPlaylist(event, songName, artistName, fileName)}
                               onUploadSong={onUploadSong}/>
         </div>
