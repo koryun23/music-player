@@ -6,6 +6,7 @@ import MusicUploadForm from "./upload/MusicUploadForm";
 import { useState } from "react";
 
 var currentAudio = null;
+
 export default function MusicPlayer(props) {
     
     const [uploadedFiles, setUploadedFiles] = useState([]);

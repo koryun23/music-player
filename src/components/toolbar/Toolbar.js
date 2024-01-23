@@ -9,7 +9,7 @@ export default function Toolbar(props) {
     
     return (
         <div className="toolbar">
-            <PlayAll />
+            <PlayAll onPlayAll={props.onPlayAll} dropdownOpen={props.playAllDropdownIsOpen}/>
             <AddAll />
             <TrackNumber />
             <Filter />

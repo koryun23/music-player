@@ -2,26 +2,23 @@
     width: auto;
     height: auto;
     background-color: rgb(229, 229, 229);
-    top: 10px;
-    left: 0;
     display: grid;
     grid-template-columns: 12% 12% 36% 20% 18%;
     padding: 15px;
-    border-radius: 3px;
+    border-radius: 10px;
     gap: 4px;
 }
 
 .play-all-button {
     position: relative;
-    border-radius: 7px;
+    border-radius: 10px;
+    height: auto;
 }
 
 .add-all-button {
     position: relative;
-    border-radius: 7px;
+    border-radius: 10px;
 }
-
-
 
 .filter-input-field {
     border-radius: 25px;
@@ -72,3 +69,7 @@
 .up-arrow-icon {
     display: inline-block;
 }
+
+/* .dropdown-div {
+    height: auto;
+} */
