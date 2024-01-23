@@ -20,8 +20,8 @@ export default function PlayAll(props) {
                 <b>Play All</b>
             </button>
             <div className={isDropdownOpen ? "dropdown-menu show" : "dropdown-menu"} aria-labelledby="dropdownMenuButton">
-                <a href="#" className="dropdown-item">Play Sequentially</a>
-                <a href="#" className="dropdown-item">Play Shuffled</a>
+                <a href="#" className="dropdown-item">Repeat After Queue Ends</a>
+                <a href="#" className="dropdown-item">Play Queue Only Once</a>
             </div>
         </div>
     );

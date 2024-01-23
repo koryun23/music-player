@@ -17,15 +17,54 @@ export default function MusicPlayer(props) {
     const [currentSong, setCurrentSong] = useState("");
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const onPlayAll = () => {};
+    const onPlayAll = (files) => {
+
+    };
+
+    const playAllOnce = (files) => {
+        for(let i = 0; i < files.length; i++) {
+            currentAudio = new Audio(URL.createObjectURL(files[i]));
+            onPlaySingle(files[i]);
+            while(!currentAudio.ended){}
+            setIsPlaying(false);
+            currentAudio.pause();
+        }
+    }
     
-    const [playMode, setPlayMode] = useState("sequential"); // sequential, shuffle, single
+    const [playMode, setPlayMode] = useState("once"); // once, repeat
     const onChangePlayMode = () => {};
 
-    const onAddAll = () => {};
+    const onAddAll = (event, mode) => {
+        event.preventDefault();
+        setAddMode(mode);
+        console.log(mode);
+        if(mode === "sequential") {
+            addAllSequential(() => console.log(currentQueue));
+        } else if(mode === "shuffled"){
+            addAllShuffled(() => console.log(currentQueue));
+        }
+    };
+
+    const addAllSequential = (cb) => {
+        let queue = songList.map(song => song);
+        setCurrentQueue(queue);
+        cb();
+    }
+
+    const addAllShuffled = () => {
+        let array = songList.map(song => song);
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        setCurrentQueue(array);
+        console.log(array);
+    }
 
     const [addMode, setAddMode] = useState("sequential") // sequential, shuffle
-    const onChangeAddMode = () => {};
+    const onChangeAddMode = (newMode) => {
+        setAddMode(addMode)
+    };
 
     const onFilter = () => {}
 
@@ -41,8 +80,6 @@ export default function MusicPlayer(props) {
     }
 
     const onPlaySingle = (fileName) => {
-        console.log("playing a single track");
-        console.log(uploadedFiles);
         if(currentSong === fileName) {
             if(currentAudio.paused){
                 currentAudio.play();
@@ -90,8 +127,7 @@ export default function MusicPlayer(props) {
              <Toolbar onPlayAll={onPlayAll} 
                       playMode={playMode} 
                       onChangePlayMode={onChangePlayMode} 
-                      onAddAll={onAddAll}
-                      addMode={addMode}
+                      onAddAll={(event, mode) => onAddAll(event, mode)}
                       onChangeAddMode={onChangeAddMode} 
                       onFilter={onFilter} />
              <SongList songList={songList} 

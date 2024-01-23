@@ -22,10 +22,8 @@ export default function AddAll(props) {
                 <b>Add All</b>
             </button>
             <div className={isDropdownOpen ? "dropdown-menu show" : "dropdown-menu"}>
-                <a href="#" className="dropdown-item">Option 1</a>
-                <a href="#" className="dropdown-item">Option 1</a>
-                <a href="#" className="dropdown-item">Option 1</a>
-
+                <a href="/" className="dropdown-item" onClick={(event) => props.onAddAll(event, "sequential")}>Add All Sequentially</a>
+                <a href="/" className="dropdown-item" onClick={(event) => props.onAddAll(event, "shuffled")}>Add All Shuffled</a>
             </div>
         </div>
     );
