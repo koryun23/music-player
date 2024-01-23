@@ -30,7 +30,7 @@ export default function Toolbar(props) {
                 <Navbar.Toggle aria-controls="navbar-light-example" />
                 <Navbar.Collapse id="navbar-light-example">
                         <Col>
-                            <PlayAll />
+                            <PlayAll onPlayAll={(event, mode) => props.onPlayAll(event, mode)}/>
                         </Col>
                         <Col>
                             <AddAll onAddAll={(event, mode) => props.onAddAll(event, mode)}/>

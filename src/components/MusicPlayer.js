@@ -4,6 +4,7 @@ import Toolbar from "./toolbar/Toolbar";
 import SongList from "./songs/SongList";
 import MusicUploadForm from "./upload/MusicUploadForm";
 import { useState } from "react";
+import { upload } from "@testing-library/user-event/dist/upload";
 
 var currentAudio = null;
 
@@ -17,17 +18,51 @@ export default function MusicPlayer(props) {
     const [currentSong, setCurrentSong] = useState("");
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const onPlayAll = (files) => {
-
+    const onPlayAll = (event, mode) => {
+        event.preventDefault();
+        let filesToPlay = [];
+        console.log(uploadedFiles);
+        for(let i = 0; i < uploadedFiles.length; i++) {
+            for(let j = 0; j < currentQueue.length; j++) {
+                let currentFileName = currentQueue[j].fileName;
+                if(uploadedFiles[i].name === currentFileName) {
+                    filesToPlay.push(uploadedFiles[i]);
+                }
+            }
+        }
+        console.log(filesToPlay);
+        if(mode === "once") {
+            playAllOnce(filesToPlay, () => console.log(filesToPlay))
+        } else if(mode === "repeat") {
+            playAllRepeat(filesToPlay, () => console.log(filesToPlay))
+        }
     };
 
-    const playAllOnce = (files) => {
+    const playAllOnce = (files, cb) => {
+        cb();
         for(let i = 0; i < files.length; i++) {
-            currentAudio = new Audio(URL.createObjectURL(files[i]));
-            onPlaySingle(files[i]);
+            onPlaySingle(files[0].name);
             while(!currentAudio.ended){}
             setIsPlaying(false);
             currentAudio.pause();
+            files.unshift();
+            setCurrentSong("")
+        }
+    }
+
+    const playAllRepeat = (files, cb) => {
+        cb();
+        for(let i = 0; i < files.length; i++) {
+            currentAudio = new Audio(URL.createObjectURL(files[i]));
+            currentAudio.play();
+            onPlaySingle(files[0].name);
+            while(!currentAudio.ended) {}
+            setIsPlaying(false);
+            currentAudio.pause();
+            setCurrentSong("");
+            if(i == files.length - 1) {
+                i = -1;
+            }
         }
     }
     
@@ -124,7 +159,7 @@ export default function MusicPlayer(props) {
 
     return (
         <div className="music-player"> 
-             <Toolbar onPlayAll={onPlayAll} 
+             <Toolbar onPlayAll={(event, mode) => onPlayAll(event, mode)} 
                       playMode={playMode} 
                       onChangePlayMode={onChangePlayMode} 
                       onAddAll={(event, mode) => onAddAll(event, mode)}
