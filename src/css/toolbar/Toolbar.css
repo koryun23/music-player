@@ -12,12 +12,14 @@
 .play-all-button {
     position: relative;
     border-radius: 10px;
-    height: auto;
+    border: 1px solid rgb(185, 185, 185);
 }
 
 .add-all-button {
     position: relative;
     border-radius: 10px;
+    border: 1px solid rgb(185, 185, 185);
+
 }
 
 .filter-input-field {
@@ -29,7 +31,9 @@
     position: relative;
     grid-column-start: 4;
     grid-column-end: 5;
-    border-radius: 7px;
+    border-radius: 10px;
+    border: 1px solid rgb(185, 185, 185);
+
 }
 
 .play-icon {

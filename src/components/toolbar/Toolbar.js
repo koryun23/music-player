@@ -5,8 +5,6 @@ import AddAll from "./AddAll";
 import TrackNumber from "./TrackNumber";
 import Filter from "./Filter";
 import { Container, Nav, NavDropdown, Navbar, Form, Button, Col } from "react-bootstrap";
-import { faP, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const playAllStyle = {
     border: "1px solid black",
@@ -28,11 +26,11 @@ export default function Toolbar(props) {
     
     return (
         <Navbar variant="light" bg="light" expand="lg" >
-            <Container fluid>
+            <Container fluid="md">
                 <Navbar.Toggle aria-controls="navbar-light-example" />
                 <Navbar.Collapse id="navbar-light-example">
                     <Col>
-                        <Nav style={playAllStyle}>
+                        <PlayAll>
                             <NavDropdown id="play-all"
                                         title="Play All"
                                         menuVariant="light"
@@ -48,10 +46,10 @@ export default function Toolbar(props) {
                                     Play Queue Only Once
                                 </NavDropdown.Item>
                             </NavDropdown>
-                        </Nav>
+                        </PlayAll>
                     </Col>
                     <Col>
-                        <Nav style={addAllStyle}>
+                        <AddAll>
                             <NavDropdown id="add-all"
                                         title="Add All"
                                         menuVariant="light"
@@ -66,11 +64,11 @@ export default function Toolbar(props) {
                                     Add To Queue Shuffled
                                 </NavDropdown.Item>
                             </NavDropdown>
-                        </Nav>
+                        </AddAll>
                     </Col>
                     <Col></Col>
                     <Col>
-                        <Nav style={trackNumberStyle}>
+                        <TrackNumber>
                             <NavDropdown id="track-number"
                                         title="Track Number"
                                         menuVariant="light"
@@ -78,17 +76,17 @@ export default function Toolbar(props) {
                                         style={{width: "100%"}}>
                                 
                             </NavDropdown>
-                        </Nav>
+                        </TrackNumber>
                     </Col>
                     <Col>
-                        <Nav>
+                        <Filter>
                             <Form>
                                 <Form.Group>
                                     <Form.Control type="text" placeholder="Filter" />
 
                                 </Form.Group>
                             </Form>
-                        </Nav>
+                        </Filter>
                     </Col>
                 </Navbar.Collapse>
             </Container>
