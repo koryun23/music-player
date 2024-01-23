@@ -32,6 +32,13 @@ export default function MusicUploadForm(props) {
         props.onUploadSong(event);
     }
 
+    const addSongToPlaylist = (event) => {
+        props.onAddSongToPlaylist(event, songName, artistName, fileName);
+        setSongName("");
+        setArtistName("");
+        setFileName("");
+    }
+
     return (
         <form className="music-upload-form">
             <div className="form form-group">
@@ -68,7 +75,7 @@ export default function MusicUploadForm(props) {
                        name="submit"
                        className="btn btn-submit" 
                        onChange={(event) => changeSelectedFile(event)}/>
-                <MusicUploadButton onAddSongToPlaylist={(event) => props.onAddSongToPlaylist(event, songName, artistName, fileName)}/>
+                <MusicUploadButton onAddSongToPlaylist={addSongToPlaylist}/>
             </div>
         </form>
 
