@@ -16,6 +16,8 @@ export default function MusicPlayer(props) {
     const [songList, setSongList] = useState([]);
     const [currentQueue, setCurrentQueue] = useState([]);
     
+    const [filteredSongList, setFilteredSongList] = useState([]);
+
     const [currentSong, setCurrentSong] = useState("");
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -107,7 +109,18 @@ export default function MusicPlayer(props) {
         setAddMode(addMode)
     };
 
-    const onFilter = () => {}
+    const onFilter = (inputWord) => {
+        console.log(inputWord);
+        if(!inputWord) {
+            setFilteredSongList(songList);
+            return;
+        }
+        let temp = songList.filter(song => (
+            song.songName.toLowerCase().includes(inputWord.toLowerCase()) || song.artistName.toLowerCase().includes(inputWord.toLowerCase())
+        ));
+        console.log(temp);
+        setFilteredSongList(temp);
+    }
 
     const onAddSongToPlaylist = (event, songName, artistName, fileName) => {
         event.preventDefault();
@@ -187,7 +200,10 @@ export default function MusicPlayer(props) {
     }
 
     const [error, setError] = useState();
-    //const [successes, setSuccesses] = useState([]);
+
+    useEffect(() => {
+        setFilteredSongList(songList);
+    }, [songList]);
 
     return (
         <div className="music-player"> 
@@ -201,7 +217,7 @@ export default function MusicPlayer(props) {
                       onAddAll={(event, mode) => onAddAll(event, mode)}
                       onChangeAddMode={onChangeAddMode} 
                       onFilter={onFilter} />
-             <SongList songList={songList} 
+             <SongList songList={filteredSongList} 
                        currentQueue={currentQueue} 
                        onPlaySingle={(fileName) => onPlaySingle(fileName)} 
                        fileName={currentSong}

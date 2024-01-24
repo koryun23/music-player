@@ -41,7 +41,7 @@ export default function Toolbar(props) {
                         </Col> */}
                         <PlayAll onPlayAll={(event, mode) => props.onPlayAll(event, mode)} />
                         <AddAll onAddAll={(event, mode) => props.onAddAll(event, mode)}/>
-                        <Filter/>
+                        <Filter onFilter={(inputWord) => props.onFilter(inputWord)}/>
 
                         
 
