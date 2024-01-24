@@ -5,7 +5,8 @@ import SongList from "./songs/SongList";
 import MusicUploadForm from "./upload/MusicUploadForm";
 import { useState } from "react";
 import { upload } from "@testing-library/user-event/dist/upload";
-
+import Error from "./Error";
+import Success from "./Success";
 var currentAudio = null;
 
 export default function MusicPlayer(props) {
@@ -20,6 +21,11 @@ export default function MusicPlayer(props) {
 
     const onPlayAll = (event, mode) => {
         event.preventDefault();
+        if(currentQueue.length == 0) {
+            onError("There are no songs currently in a queue. Consider adding songs to a queue");
+            removeError();
+            return;
+        }
         let filesToPlay = [];
         console.log(uploadedFiles);
         for(let i = 0; i < uploadedFiles.length; i++) {
@@ -108,9 +114,22 @@ export default function MusicPlayer(props) {
         let songListTemp = songList.map(song => song);
         console.log(songListTemp);
         let trackNumber = songListTemp.length + 1;
-        songListTemp.push({
+        let newSong = {
             songName: songName, artistName: artistName, trackNumber: trackNumber, fileName: fileName
-        });
+        };
+        for(let i = 0; i < songListTemp.length; i++) {
+            if(songListTemp[i].songName === songName) {
+                onError(`There already exists a song named '${songName}' in your playlist: please specify another name`)
+                removeError();
+                return;
+            }
+            if(songListTemp[i].fileName === fileName) {
+                onError(`There already exists a song imported from the specified file`)
+                removeError();
+                return;
+            }
+        }
+        songListTemp.push(newSong);
         setSongList(songListTemp);
     }
 
@@ -157,8 +176,25 @@ export default function MusicPlayer(props) {
         setUploadedFiles(uploadedFilesTemp);
     }
 
+    const onError = (message) => {
+        setError(message);
+    }
+
+    const removeError = () => {
+        setTimeout(() => {
+            setError("")
+        }, 6000)
+    }
+
+    const [error, setError] = useState();
+    //const [successes, setSuccesses] = useState([]);
+
     return (
         <div className="music-player"> 
+            {
+                error && <Error errorMessage={error}/>
+            }
+            
              <Toolbar onPlayAll={(event, mode) => onPlayAll(event, mode)} 
                       playMode={playMode} 
                       onChangePlayMode={onChangePlayMode} 
@@ -171,7 +207,10 @@ export default function MusicPlayer(props) {
                        fileName={currentSong}
                        isPlaying={isPlaying}/>
              <MusicUploadForm onAddSongToPlaylist={(event, songName, artistName, fileName) => onAddSongToPlaylist(event, songName, artistName, fileName)}
-                              onUploadSong={onUploadSong}/>
+                              onUploadSong={onUploadSong} 
+                              onError={(message) => onError(message)}
+                              removeError={removeError}
+                              />
         </div>
     );
 

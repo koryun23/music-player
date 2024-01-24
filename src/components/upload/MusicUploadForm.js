@@ -10,7 +10,6 @@ export default function MusicUploadForm(props) {
     const [fileName, setFileName] = useState("");
     const [songName, setSongName] = useState("");
     const [artistName, setArtistName] = useState("");
-    const [errorMessages, setErrorMessages] = useState([]);
     const [uploadIndicator, setUploadIndicator] = useState(false);
     const changeSongName = (event) => {
         setSongName(event.target.value);
@@ -27,18 +26,40 @@ export default function MusicUploadForm(props) {
             enteredFileName = enteredFileName.slice(enteredFileName.lastIndexOf("\\") + 1);
             let format = enteredFileName.slice(enteredFileName.lastIndexOf("."));
             if(format !== ".mp3" && format !== ".wav") {
-                setErrorMessages([`Unsupported file type(${format}): only .mp3 and .wav are supported.`]);
+                props.onError(`Cannot accept a ${format} file: Only accepting .mp3 and .wav files`);
+                props.removeError()
+                setSongName("");
+                setArtistName("");
+                setUploadIndicator(false);
+                return;
             }
             setFileName(enteredFileName);
-            setErrorMessages([]);
             props.onUploadSong(event);
             setUploadIndicator(false)
-        }, 2000)
+        }, 500)
         setUploadIndicator(true);
     }
 
     const addSongToPlaylist = (event) => {
+        event.preventDefault();
+        if(!fileName) {
+            props.onError("Please upload the song");
+            props.removeError();
+            return;
+        }
+        if(!songName) {
+            props.onError("Please specify the name of the song");
+            props.removeError();
+            return;
+        }
+        if(!artistName) {
+            props.onError("Please specify the artist");
+            props.removeError();
+            return;
+        }
+
         props.onAddSongToPlaylist(event, songName, artistName, fileName);
+
         setSongName("");
         setArtistName("");
         setFileName("");
@@ -47,9 +68,6 @@ export default function MusicUploadForm(props) {
     return (
         <form className="music-upload-form">
             <div className="form form-group">
-                {
-                    errorMessages.length > 0 && <small className="error">{errorMessages[0]}</small>
-                }
                 <input type="text" 
                        name="fileName" 
                        placeholder="No File Selected" 

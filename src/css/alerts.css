@@ -1,0 +1,34 @@
+.error {
+    background-color: rgb(255, 121, 121);
+    border-radius: 15px;
+    width: fit-content;
+    padding: 10px;
+    margin: auto;
+    animation: fade-out 7s;
+}
+
+.success {
+    background-color: rgb(89, 196, 89);
+    border-radius: 15px;
+    width: fit-content;
+    padding: 10px;
+    margin: auto;
+}
+.error-message {
+    color: white;
+    text-align: center;
+}
+.success-message {
+    color: white;
+    text-align: center;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    } 
+    to {
+        opacity: 0;
+    }
+}
+
