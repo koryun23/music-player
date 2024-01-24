@@ -3,14 +3,15 @@ import "../../css/upload/MusicUploadForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import MusicUploadButton from "./MusicUploadButton";
-
+import MusicUploadIndicator from "./MusicUploadIndicator";
+import { useEffect } from "react";
 export default function MusicUploadForm(props) {
 
     const [fileName, setFileName] = useState("");
     const [songName, setSongName] = useState("");
     const [artistName, setArtistName] = useState("");
     const [errorMessages, setErrorMessages] = useState([]);
-
+    const [uploadIndicator, setUploadIndicator] = useState(false);
     const changeSongName = (event) => {
         setSongName(event.target.value);
     }
@@ -22,14 +23,18 @@ export default function MusicUploadForm(props) {
     const changeSelectedFile = (event) => {
         console.log(event.target.files);
         let enteredFileName = event.target.value;
-        enteredFileName = enteredFileName.slice(enteredFileName.lastIndexOf("\\") + 1);
-        let format = enteredFileName.slice(enteredFileName.lastIndexOf("."));
-        if(format !== ".mp3" && format !== ".wav") {
-            setErrorMessages([`Unsupported file type(${format}): only .mp3 and .wav are supported.`]);
-        }
-        setFileName(enteredFileName);
-        setErrorMessages([]);
-        props.onUploadSong(event);
+        setTimeout(() => {
+            enteredFileName = enteredFileName.slice(enteredFileName.lastIndexOf("\\") + 1);
+            let format = enteredFileName.slice(enteredFileName.lastIndexOf("."));
+            if(format !== ".mp3" && format !== ".wav") {
+                setErrorMessages([`Unsupported file type(${format}): only .mp3 and .wav are supported.`]);
+            }
+            setFileName(enteredFileName);
+            setErrorMessages([]);
+            props.onUploadSong(event);
+            setUploadIndicator(false)
+        }, 2000)
+        setUploadIndicator(true);
     }
 
     const addSongToPlaylist = (event) => {
@@ -38,6 +43,13 @@ export default function MusicUploadForm(props) {
         setArtistName("");
         setFileName("");
     }
+
+    // useEffect(() => {
+    //     if(fileName){
+    //         setUploadIndicator(true);
+    //         setTimeout(() => setUploadIndicator(false), 1000);
+    //     }
+    // }, [fileName])
 
     return (
         <form className="music-upload-form">
@@ -76,6 +88,7 @@ export default function MusicUploadForm(props) {
                        className="btn btn-submit" 
                        onChange={(event) => changeSelectedFile(event)}/>
                 <MusicUploadButton onAddSongToPlaylist={addSongToPlaylist}/>
+                <MusicUploadIndicator uploadIndicator={uploadIndicator}/>
             </div>
         </form>
 
