@@ -2,6 +2,7 @@ import { React, useState} from "react";
 import "../../css/songs/SongList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCheck, faForward, faGrip, faHeart, faPause, faPlay, faReply, faShare } from "@fortawesome/free-solid-svg-icons";
+import { Button, ButtonGroup } from "react-bootstrap";
 
 export default function SongRow(props) {
 
@@ -23,16 +24,16 @@ export default function SongRow(props) {
                     }
                 </button>
             </div>
-            <div className="song-name col">
+            <div className="song-name col col-md-10 col-xs-6">
                 {props.songName}
             </div>
-            <div className="artist-name col">
+            <div className="artist-name col col-md-10 col-xs-6">
                 {props.artistName}
             </div>
-            <div className="track-number col">
+            <div className="track-number col col-md-5 col-xs-3">
                 {props.trackNumber}
             </div>
-            <div className="additional-options col">
+            <div className="additional-options col col-md-5 col-xs-3">
                 <button className="option">
                     <FontAwesomeIcon icon={faHeart}/>
                 </button>
@@ -45,7 +46,6 @@ export default function SongRow(props) {
                 <button className="option">
                     <FontAwesomeIcon icon={faCaretDown} />
                 </button>
-
             </div>
         </div>
     );

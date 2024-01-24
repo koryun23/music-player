@@ -24,7 +24,8 @@
 }
 
 .song-play-and-move {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
 .dots {

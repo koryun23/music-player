@@ -29,19 +29,21 @@ export default function Toolbar(props) {
             <Container fluid="lg">
                 <Navbar.Toggle aria-controls="navbar-light-example" />
                 <Navbar.Collapse id="navbar-light-example">
-                        <Col>
+                        {/* <Col md={2} sm={1}>
                             <PlayAll onPlayAll={(event, mode) => props.onPlayAll(event, mode)}/>
                         </Col>
-                        <Col>
+                        <Col md={2} sm={1}>
                             <AddAll onAddAll={(event, mode) => props.onAddAll(event, mode)}/>
                         </Col>
-                        <Col></Col>
-                        <Col>
-                            <TrackNumber/>
-                        </Col>
-                        <Col>
+                        <Col md={6} sm={3}></Col>
+                        <Col md={3} sm={1.5}>
                             <Filter/>
-                        </Col>
+                        </Col> */}
+                        <PlayAll onPlayAll={(event, mode) => props.onPlayAll(event, mode)} />
+                        <AddAll onAddAll={(event, mode) => props.onAddAll(event, mode)}/>
+                        <Filter/>
+
+                        
 
                 </Navbar.Collapse>
             </Container>

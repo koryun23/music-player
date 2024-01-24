@@ -6,11 +6,11 @@ export default function SongList(props) {
     return (
         <div className="song-list">
             <div className="top-row">
-                <div className="top-col"></div>
-                <div className="top-col">Song Name</div>
-                <div className="top-col">Artist Name</div>
-                <div className="top-col">Track</div>
-                <div className="top-col"></div>
+                <div className="top-col col-sm-12 col-xs-6"></div>
+                <div className="top-col col-sm-18 col-xs-9">Song Name</div>
+                <div className="top-col col-sm-18 col-xs-9">Artist Name</div>
+                <div className="top-col col-sm-12 col-xs-6">Track</div>
+                <div className="top-col col-sm-12 col-xs-6"></div>
             </div>
             {props.songList.map(song => (
                 <SongRow songName={song.songName}
