@@ -44,13 +44,6 @@ export default function MusicUploadForm(props) {
         setFileName("");
     }
 
-    // useEffect(() => {
-    //     if(fileName){
-    //         setUploadIndicator(true);
-    //         setTimeout(() => setUploadIndicator(false), 1000);
-    //     }
-    // }, [fileName])
-
     return (
         <form className="music-upload-form">
             <div className="form form-group">
