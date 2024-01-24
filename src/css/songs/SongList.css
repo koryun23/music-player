@@ -1,5 +1,5 @@
 .song-list {
-    width: 100%;
+    width: auto;
     margin-top: 10px;
 }
 
@@ -9,15 +9,11 @@
     border-bottom: 1px solid rgb(229, 229, 229);
 }
 
-.top-row {
-    display: grid;
-    grid-template-columns: 5% 30% 30% 20% 15%;
-    gap: 1px;
-}
 
 .top-col {
     background-color:rgb(229, 229, 229);
-    padding: 15px;
+    padding: 10px;
+    margin: 1px;
 }
 .col {
     padding: 10px;
@@ -48,4 +44,9 @@
 .option {
     background-color: white;
     border: 0px;
+}
+
+
+th {
+    background-color: rgb(229, 229, 229);
 }

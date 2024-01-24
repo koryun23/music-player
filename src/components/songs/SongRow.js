@@ -11,42 +11,43 @@ export default function SongRow(props) {
     const [trackNumber, setTrackNumber] = useState(props.trackNumber);
     const [fileName, setFileName] = useState(props.fileName);
 
-    return (
-        <div className="song-row row">
-            <div className="song-play-and-move col ">
-                <button className="dots">
-                    <FontAwesomeIcon icon={faGrip}/>
-                </button>
-                <button className="play" onClick={() => props.onPlaySingle(fileName)}>
-                    {
-                        (props.isPlaying && <FontAwesomeIcon icon={faPause}/>) ||
-                        (<FontAwesomeIcon icon={faPlay}/>)
-                    }
-                </button>
-            </div>
-            <div className="song-name col">
+    const row = (
+        <tr>
+            <th scope="row">
+                    <button className="dots">
+                        <FontAwesomeIcon icon={faGrip}/>
+                    </button>
+                    <button className="play" onClick={() => props.onPlaySingle(fileName)}>
+                        {
+                            (props.isPlaying && <FontAwesomeIcon icon={faPause}/>) ||
+                            (<FontAwesomeIcon icon={faPlay}/>)
+                        }
+                    </button>
+            </th>
+            <td>
                 {props.songName}
-            </div>
-            <div className="artist-name col">
+            </td>
+            <td>
                 {props.artistName}
-            </div>
-            <div className="track-number col">
+            </td>
+            <td>
                 {props.trackNumber}
-            </div>
-            <div className="additional-options col">
-                <button className="option">
-                    <FontAwesomeIcon icon={faHeart}/>
-                </button>
-                <button className="option">
-                    <FontAwesomeIcon icon={faCheck}/>
-                </button>
-                <button className="option">
-                    <FontAwesomeIcon icon={faShare}/>
-                </button>
-                <button className="option">
-                    <FontAwesomeIcon icon={faCaretDown} />
-                </button>
-            </div>
-        </div>
+            </td>
+            <td>
+                    <button className="option">
+                        <FontAwesomeIcon icon={faHeart}/>
+                    </button>
+                    <button className="option">
+                        <FontAwesomeIcon icon={faCheck}/>
+                    </button>
+                    <button className="option">
+                        <FontAwesomeIcon icon={faShare}/>
+                    </button>
+                    <button className="option">
+                        <FontAwesomeIcon icon={faCaretDown} />
+                    </button>
+            </td>
+        </tr>
     );
+    return row;
 } 
