@@ -1,39 +1,29 @@
 .toolbar{
-    width: auto;
-    height: auto;
     background-color: rgb(229, 229, 229);
-    display: grid;
-    grid-template-columns: 12% 12% 36% 20% 18%;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
-    gap: 4px;
+    height: fit-content;
 }
-
 .play-all-button {
-    position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid rgb(185, 185, 185);
+    height: fit-content;
+    width: fit-content;
 }
 
 .add-all-button {
-    position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid rgb(185, 185, 185);
+    height: fit-content;
+    width: fit-content;
 }
 
 .filter-input-field {
-    border-radius: 20px;
-    padding: 10px;
-    border: 1px solid 1px solid rgb(185, 185, 185);
-}
-
-.track-number-button {
-    position: relative;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid rgb(185, 185, 185);
-
+    height: auto;
+    padding: 5px;
+    width: 100%;
 }
 
 .play-icon {
@@ -44,12 +34,10 @@
     display: inline-block;
     margin-right: 10px;
 }
-
 .button-description{
     display: inline-block;
     padding: auto;
 }
-
 .options {
     display: inline-block;
     height: 100%;
@@ -64,16 +52,20 @@
     border-top: 0;
     border-bottom: 0;
 }
-
 .down-arrow-icon {
     margin-right: 10px;
     display: inline-block;
 }
-
 .up-arrow-icon {
     display: inline-block;
 }
 
-/* .dropdown-div {
-    height: auto;
-} */
+.filter-form {
+    height: fit-content;
+    width: fit-content;
+}
+
+.custom-column {
+    height: 100%;
+    margin:auto;
+}

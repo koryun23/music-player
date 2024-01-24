@@ -12,8 +12,8 @@ export default function SongRow(props) {
     const [fileName, setFileName] = useState(props.fileName);
 
     return (
-        <div className="song-row">
-            <div className="song-play-and-move col">
+        <div className="song-row row">
+            <div className="song-play-and-move col ">
                 <button className="dots">
                     <FontAwesomeIcon icon={faGrip}/>
                 </button>
@@ -24,16 +24,16 @@ export default function SongRow(props) {
                     }
                 </button>
             </div>
-            <div className="song-name col col-md-10 col-xs-6">
+            <div className="song-name col">
                 {props.songName}
             </div>
-            <div className="artist-name col col-md-10 col-xs-6">
+            <div className="artist-name col">
                 {props.artistName}
             </div>
-            <div className="track-number col col-md-5 col-xs-3">
+            <div className="track-number col">
                 {props.trackNumber}
             </div>
-            <div className="additional-options col col-md-5 col-xs-3">
+            <div className="additional-options col">
                 <button className="option">
                     <FontAwesomeIcon icon={faHeart}/>
                 </button>

@@ -14,11 +14,12 @@ export default function Filter(props) {
     }
 
     return (
-        <form className="dropdown-div">
-            <div className="form form-group">
+        <form>
+            <div className="filter-form">
                 <input type="text" 
                        className="filter-input-field" 
-                       placeholder="Filter" 
+                       placeholder="&#xF002; Filter" 
+                       style={{fontFamily: "Arial, FontAwesome"}}
                        value={inputWord}
                        onChange={(event) => onInputWordChange(event)}/>
             </div>

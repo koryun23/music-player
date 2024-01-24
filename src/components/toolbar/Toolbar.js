@@ -5,6 +5,8 @@ import AddAll from "./AddAll";
 import TrackNumber from "./TrackNumber";
 import Filter from "./Filter";
 import { Container, Nav, NavDropdown, Navbar, Form, Button, Col, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const playAllStyle = {
     border: "1px solid black",
@@ -22,37 +24,29 @@ const trackNumberStyle = {
     borderRadius: "10px"
 }
 
+const navbarStyle = {
+    display: "grid",
+    gridTemplateColumns: "auto auto auto"
+}
+
 export default function Toolbar(props) {
     
     return (
-        <Navbar variant="light" bg="light" expand="lg" >
-            <Container fluid="lg">
-                <Navbar.Toggle aria-controls="navbar-light-example" />
-                <Navbar.Collapse id="navbar-light-example">
-                        {/* <Col md={2} sm={1}>
-                            <PlayAll onPlayAll={(event, mode) => props.onPlayAll(event, mode)}/>
-                        </Col>
-                        <Col md={2} sm={1}>
-                            <AddAll onAddAll={(event, mode) => props.onAddAll(event, mode)}/>
-                        </Col>
-                        <Col md={6} sm={3}></Col>
-                        <Col md={3} sm={1.5}>
-                            <Filter/>
-                        </Col> */}
-                        <PlayAll onPlayAll={(event, mode) => props.onPlayAll(event, mode)} />
-                        <AddAll onAddAll={(event, mode) => props.onAddAll(event, mode)}/>
-                        <Filter onFilter={(inputWord) => props.onFilter(inputWord)}/>
+        <div className="container-fluid">
+            <div className="toolbar row">
+                <div className="col-md-2 col-sm-4 col-xs-12 custom-column">
+                    <PlayAll onPlayAll={props.onPlayAll} dropdownOpen={props.playAllDropdownIsOpen}/>
+                </div>
+                <div className="col-md-2 col-sm-4 col-xs-12 custom-column">
+                    <AddAll onAddAll={props.onAddAll}/>
+                </div>
+                <div className="col-md-6 col-sm-1 custom-column"></div>
+                <div className="col-md-2 col-sm-3 col-xs-12 custom-column">
+                    <Filter onFilter={props.onFilter}/>
+                </div>
+                <div className="col-sm-1"></div>
+            </div>
+        </div>
 
-                        
-
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-        // <div className="toolbar">
-        //     <PlayAll onPlayAll={props.onPlayAll} dropdownOpen={props.playAllDropdownIsOpen}/>
-        //     <AddAll />
-        //     <TrackNumber />
-        //     <Filter />
-        // </div>
     );
 }
