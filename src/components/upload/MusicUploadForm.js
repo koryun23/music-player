@@ -22,22 +22,19 @@ export default function MusicUploadForm(props) {
     const changeSelectedFile = (event) => {
         console.log(event.target.files);
         let enteredFileName = event.target.value;
-        setTimeout(() => {
-            enteredFileName = enteredFileName.slice(enteredFileName.lastIndexOf("\\") + 1);
-            let format = enteredFileName.slice(enteredFileName.lastIndexOf("."));
-            if(format !== ".mp3" && format !== ".wav") {
-                props.onError(`Cannot accept a ${format} file: Only accepting .mp3 and .wav files`);
-                props.removeError()
-                setSongName("");
-                setArtistName("");
-                setUploadIndicator(false);
-                return;
-            }
-            setFileName(enteredFileName);
-            props.onUploadSong(event);
-            setUploadIndicator(false)
-        }, 500)
-        setUploadIndicator(true);
+        enteredFileName = enteredFileName.slice(enteredFileName.lastIndexOf("\\") + 1);
+        let format = enteredFileName.slice(enteredFileName.lastIndexOf("."));
+        if(format !== ".mp3" && format !== ".wav") {
+            props.onError(`Cannot accept a ${format} file: Only accepting .mp3 and .wav files`);
+            props.removeError()
+            setSongName("");
+            setArtistName("");
+            setUploadIndicator(false);
+            return;
+        }
+        setFileName(enteredFileName);
+        props.onUploadSong(event);
+
     }
 
     const addSongToPlaylist = (event) => {
@@ -57,12 +54,15 @@ export default function MusicUploadForm(props) {
             props.removeError();
             return;
         }
-
-        props.onAddSongToPlaylist(event, songName, artistName, fileName);
-
-        setSongName("");
-        setArtistName("");
-        setFileName("");
+        setTimeout(() => {
+            props.onAddSongToPlaylist(event, songName, artistName, fileName);
+            
+            setSongName("");
+            setArtistName("");
+            setFileName("");
+            setUploadIndicator(false);
+        }, 500);
+        setUploadIndicator(true);
     }
 
     return (

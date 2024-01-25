@@ -7,6 +7,7 @@ import { useState } from "react";
 import { upload } from "@testing-library/user-event/dist/upload";
 import Error from "./Error";
 import Success from "./Success";
+
 var currentAudio = null;
 
 export default function MusicPlayer(props) {
@@ -48,30 +49,36 @@ export default function MusicPlayer(props) {
 
     const playAllOnce = (files, cb) => {
         cb();
-        for(let i = 0; i < files.length; i++) {
-            onPlaySingle(files[0].name);
-            while(!currentAudio.ended){}
-            setIsPlaying(false);
-            currentAudio.pause();
-            files.unshift();
-            setCurrentSong("")
-        }
+        //console.log(currentQueue);
+        //let audioArray = files.map(file => new Audio(URL.createObjectURL(file.name)));
+        // var i = 0;
+        // while(i < files.length) {
+        //     console.log(currentAudio);
+        //     if(!currentAudio) currentAudio = new Audio(URL.createObjectURL(files[i]));
+        //     onPlaySingle(files[i].name, () => {i++});
+        // }
+        // for(let i = 0; i < files.length; ) {
+        //     if(currentAudio) {
+        //         currentAudio.pause();
+        //         setCurrentSong("");
+        //         setIsPlaying(false);
+        //     }
+        //     currentAudio = onPlaySingle(files[i].name);
+        //     currentAudio.onended = setTimeout(() => {
+        //         i++;
+        //     }, 1000); 
+        // }
     }
 
     const playAllRepeat = (files, cb) => {
         cb();
-        for(let i = 0; i < files.length; i++) {
-            currentAudio = new Audio(URL.createObjectURL(files[i]));
-            currentAudio.play();
-            onPlaySingle(files[0].name);
-            while(!currentAudio.ended) {}
-            setIsPlaying(false);
-            currentAudio.pause();
-            setCurrentSong("");
-            if(i == files.length - 1) {
-                i = -1;
-            }
-        }
+        
+        // for(let i = 0; i < files.length; i++) {
+        //     currentAudio = new Audio(URL.createObjectURL(files[i]));
+        //     currentAudio.play();
+        //     setIsPlaying(true);
+        //     setCurrentSong(files[0].name);
+        // }
     }
     
     const [playMode, setPlayMode] = useState("once"); // once, repeat
@@ -146,7 +153,7 @@ export default function MusicPlayer(props) {
         setSongList(songListTemp);
     }
 
-    const onPlaySingle = (fileName) => {
+    const onPlaySingle = (fileName, onEnded) => {
         if(currentSong === fileName) {
             if(currentAudio.paused){
                 currentAudio.play();
@@ -167,11 +174,17 @@ export default function MusicPlayer(props) {
                     currentAudio.play();
                     setIsPlaying(true);
                     setCurrentSong(fileName);
-                    return;
+                    currentAudio.onended = () => {
+                        setCurrentSong("")
+                        setIsPlaying(false);
+                        console.log("ENDED");
+                        onEnded();
+                    }
+                    return currentAudio;
                 }
             }
         }
-
+        return currentAudio;
     }
 
     const onUploadSong = (event) => {

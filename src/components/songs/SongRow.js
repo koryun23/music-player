@@ -14,15 +14,15 @@ export default function SongRow(props) {
     const row = (
         <tr>
             <th scope="row">
-                    <button className="dots">
-                        <FontAwesomeIcon icon={faGrip}/>
-                    </button>
-                    <button className="play" onClick={() => props.onPlaySingle(fileName)}>
-                        {
-                            (props.isPlaying && <FontAwesomeIcon icon={faPause}/>) ||
-                            (<FontAwesomeIcon icon={faPlay}/>)
-                        }
-                    </button>
+                <button className="dots">
+                    <FontAwesomeIcon icon={faGrip}/>
+                </button>
+                <button className="play" onClick={() => props.onPlaySingle(fileName)}>
+                    {
+                        (props.isPlaying && <FontAwesomeIcon icon={faPause}/>) ||
+                        (<FontAwesomeIcon icon={faPlay}/>)
+                    }
+                </button>
             </th>
             <td>
                 {props.songName}
