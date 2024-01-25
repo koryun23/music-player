@@ -51,44 +51,14 @@ export default function MusicPlayer(props) {
 
     const playAllOnce = (files, cb) => {
         cb();
-        //console.log(currentQueue);
-        //let audioArray = files.map(file => new Audio(URL.createObjectURL(file.name)));
-        // var i = 0;
-        // while(i < files.length) {
-        //     console.log(currentAudio);
-        //     if(!currentAudio) currentAudio = new Audio(URL.createObjectURL(files[i]));
-        //     onPlaySingle(files[i].name, () => {i++});
-        // }
-        // for(let i = 0; i < files.length; ) {
-        //     if(currentAudio) {
-        //         currentAudio.pause();
-        //         setCurrentSong("");
-        //         setIsPlaying(false);
-        //     }
-        //     currentAudio = onPlaySingle(files[i].name);
-        //     currentAudio.onended = setTimeout(() => {
-        //         i++;
-        //     }, 1000); 
-        // }
     }
 
     const playAllRepeat = (files, cb) => {
         cb();
-        
-        // for(let i = 0; i < files.length; i++) {
-        //     currentAudio = new Audio(URL.createObjectURL(files[i]));
-        //     currentAudio.play();
-        //     setIsPlaying(true);
-        //     setCurrentSong(files[0].name);
-        // }
     }
     
-    const [playMode, setPlayMode] = useState("once"); // once, repeat
-    const onChangePlayMode = () => {};
-
     const onAddAll = (event, mode) => {
         event.preventDefault();
-        setAddMode(mode);
         console.log(mode);
         if(mode === "sequential") {
             addAllSequential(() => console.log(currentQueue));
@@ -112,11 +82,6 @@ export default function MusicPlayer(props) {
         setCurrentQueue(array);
         console.log(array);
     }
-
-    const [addMode, setAddMode] = useState("sequential") // sequential, shuffle
-    const onChangeAddMode = (newMode) => {
-        setAddMode(addMode)
-    };
 
     const onFilter = (inputWord) => {
         console.log(inputWord);
@@ -182,8 +147,10 @@ export default function MusicPlayer(props) {
     }
 
     const onStopPlaying = (fileName) => {
+        console.log(fileName);
+        console.log(currentSong)
         if(!currentAudio) return;
-        if(fileName != currentSong) return;
+        if(fileName !== currentSong) return;
         currentAudio.pause();
         setIsPlaying(false);
         setCurrentSong(false);
@@ -195,6 +162,7 @@ export default function MusicPlayer(props) {
         console.log(currentSong);
         if(!currentAudio) return;
         if(currentSong !== fileName) return;
+        if(songList.length <= 1) return;
         let tempUploadedFiles = uploadedFiles.map(file => file);
         let fileToPlay = "";
         for(let i = 0; i < tempUploadedFiles.length; i++) {
@@ -244,11 +212,9 @@ export default function MusicPlayer(props) {
                         setIsPlaying(false);
                         console.log("ENDED");
                     }
-                    return currentAudio;
                 }
             }
         }
-        return currentAudio;
     }
 
     const onUploadSong = (event) => {
@@ -289,10 +255,7 @@ export default function MusicPlayer(props) {
             }
             
              <Toolbar onPlayAll={(event, mode) => onPlayAll(event, mode)} 
-                      playMode={playMode} 
-                      onChangePlayMode={onChangePlayMode} 
                       onAddAll={(event, mode) => onAddAll(event, mode)}
-                      onChangeAddMode={onChangeAddMode} 
                       onFilter={onFilter} />
              <SongList songList={filteredSongList} 
                        currentQueue={currentQueue} 
@@ -303,7 +266,7 @@ export default function MusicPlayer(props) {
                        onAddToFavorites={(songName) => onAddToFavorites(songName)} 
                        onRemoveFromFavorites={(songName) => onRemoveFromFavorites(songName)}
                        onStopPlaying={(fileName) => onStopPlaying(fileName)} 
-                       onPlayNextSong={(fileName) => onPlayNextSong(fileName)}/>
+                       onPlayNextSong={(fileName) => onPlayNextSong(fileName)} />
              <MusicUploadForm onAddSongToPlaylist={(event, songName, artistName, fileName) => onAddSongToPlaylist(event, songName, artistName, fileName)}
                               onUploadSong={onUploadSong} 
                               onError={(message) => onError(message)}

@@ -1,8 +1,8 @@
 import { React, useState} from "react";
 import "../../css/songs/SongList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCheck, faForward, faGrip, faHeart, faPause, faPlay, faReply, faShare } from "@fortawesome/free-solid-svg-icons";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { faCaretDown, faCheck, faForward, faGrip, faHeart, faPause, faPlay, faReply, faShare, faStop } from "@fortawesome/free-solid-svg-icons";
+import { Button, ButtonGroup, Dropdown, DropdownButton, DropdownItem } from "react-bootstrap";
 
 export default function SongRow(props) {
 
@@ -10,6 +10,8 @@ export default function SongRow(props) {
     const [artistName, setArtistName] = useState(props.artistName);
     const [trackNumber, setTrackNumber] = useState(props.trackNumber);
     const [fileName, setFileName] = useState(props.fileName);
+
+    const [showDropdown, setShowDropdown] = useState(false);
 
     const row = (
         <tr>
@@ -37,14 +39,15 @@ export default function SongRow(props) {
                 <button className="option" onClick={props.isFavoriteSong ? props.onRemoveFromFavorites : props.onAddToFavorites}>
                     <FontAwesomeIcon icon={faHeart} style={props.isFavoriteSong ? {color: "red"} : {}}/>
                 </button>
+            </td>
+            <td>
                 <button className="option" onClick={props.onStopPlaying}>
-                    <FontAwesomeIcon icon={faCheck}/>
+                    <FontAwesomeIcon icon={faStop}/>
                 </button>
+            </td>
+            <td>
                 <button className="option" onClick={props.onPlayNextSong}>
-                    <FontAwesomeIcon icon={faShare}/>
-                </button>
-                <button className="option">
-                    <FontAwesomeIcon icon={faCaretDown} />
+                    <FontAwesomeIcon icon={faForward}/>
                 </button>
             </td>
         </tr>

@@ -12,6 +12,11 @@ export default function SongList(props) {
                     <th scope="col">Artist Name</th>
                     <th scope="col">Track</th>
                     <th scope="col"></th>
+
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +31,9 @@ export default function SongList(props) {
                             onAddToFavorites={() => props.onAddToFavorites(song.songName)}
                             onRemoveFromFavorites={() => props.onRemoveFromFavorites(song.songName)} 
                             onStopPlaying={() => props.onStopPlaying(song.fileName)}
-                            onPlayNextSong={() => props.onPlayNextSong(song.fileName)}/>
+                            onPlayNextSong={() => props.onPlayNextSong(song.fileName)}
+                            onRemoveFromPlaylist={() => props.onRemoveFromPlaylist(song.fileName)}
+                            onRemoveFromQueue={() => {props.onRemoveFromQueue(song.fileName)}}/>
                 ))}
             </tbody>
         </table>
