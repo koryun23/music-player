@@ -181,6 +181,15 @@ export default function MusicPlayer(props) {
         setFavoriteSongList(tempFavorites)
     }
 
+    const onStopPlaying = (fileName) => {
+        if(!currentAudio) return;
+        if(fileName != currentSong) return;
+        currentAudio.pause();
+        setIsPlaying(false);
+        setCurrentSong(false);
+        currentAudio = null;
+    }
+
     const onPlaySingle = (fileName) => {
         if(currentSong === fileName) {
             if(currentAudio.paused){
@@ -264,7 +273,8 @@ export default function MusicPlayer(props) {
                        isPlaying={isPlaying} 
                        favoriteSongList={favoriteSongList.map(song => song.songName)}
                        onAddToFavorites={(songName) => onAddToFavorites(songName)} 
-                       onRemoveFromFavorites={(songName) => onRemoveFromFavorites(songName)}/>
+                       onRemoveFromFavorites={(songName) => onRemoveFromFavorites(songName)}
+                       onStopPlaying={(fileName) => onStopPlaying(fileName)}/>
              <MusicUploadForm onAddSongToPlaylist={(event, songName, artistName, fileName) => onAddSongToPlaylist(event, songName, artistName, fileName)}
                               onUploadSong={onUploadSong} 
                               onError={(message) => onError(message)}
