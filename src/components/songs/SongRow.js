@@ -37,10 +37,10 @@ export default function SongRow(props) {
                 <button className="option" onClick={props.isFavoriteSong ? props.onRemoveFromFavorites : props.onAddToFavorites}>
                     <FontAwesomeIcon icon={faHeart} style={props.isFavoriteSong ? {color: "red"} : {}}/>
                 </button>
-                <button className="option">
+                <button className="option" onClick={props.onStopPlaying}>
                     <FontAwesomeIcon icon={faCheck}/>
                 </button>
-                <button className="option">
+                <button className="option" onClick={props.onPlayNextSong}>
                     <FontAwesomeIcon icon={faShare}/>
                 </button>
                 <button className="option">

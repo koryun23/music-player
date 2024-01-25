@@ -181,7 +181,7 @@ export default function MusicPlayer(props) {
         setFavoriteSongList(tempFavorites)
     }
 
-    const onPlaySingle = (fileName, onEnded) => {
+    const onPlaySingle = (fileName) => {
         if(currentSong === fileName) {
             if(currentAudio.paused){
                 currentAudio.play();
@@ -206,7 +206,6 @@ export default function MusicPlayer(props) {
                         setCurrentSong("")
                         setIsPlaying(false);
                         console.log("ENDED");
-                        onEnded();
                     }
                     return currentAudio;
                 }
