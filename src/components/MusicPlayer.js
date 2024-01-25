@@ -187,6 +187,7 @@ export default function MusicPlayer(props) {
     }
 
     const onPlaySingle = (fileName) => {
+        console.log(currentSong, fileName);
         if(currentSong === fileName) {
             if(currentAudio.paused){
                 currentAudio.play();

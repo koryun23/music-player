@@ -8,12 +8,11 @@ export default function SongList(props) {
             <thead className="thead-light">
                 <tr>
                     <th scope="col"></th>
+
                     <th scope="col">Song Name</th>
                     <th scope="col">Artist Name</th>
                     <th scope="col">Track</th>
-                    <th scope="col"></th>
 
-                    <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -25,7 +24,7 @@ export default function SongList(props) {
                             artistName={song.artistName} 
                             trackNumber={song.trackNumber} 
                             fileName={song.fileName}
-                            onPlaySingle={(fileName) => props.onPlaySingle(fileName)}
+                            onPlaySingle={() => props.onPlaySingle(song.fileName)}
                             isPlaying={props.isPlaying && props.fileName == song.fileName} 
                             isFavoriteSong={props.favoriteSongList.includes(song.songName)} 
                             onAddToFavorites={() => props.onAddToFavorites(song.songName)}

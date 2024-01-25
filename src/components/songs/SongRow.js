@@ -16,7 +16,7 @@ export default function SongRow(props) {
     const row = (
         <tr>
             <th scope="row">
-                <button className="play" onClick={() => props.onPlaySingle(fileName)}>
+                <button className="play" onClick={() => props.onPlaySingle()}>
                     {
                         (props.isPlaying && <FontAwesomeIcon icon={faPause}/>) ||
                         (<FontAwesomeIcon icon={faPlay}/>)
