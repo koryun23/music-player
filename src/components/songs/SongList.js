@@ -4,7 +4,7 @@ import SongRow from "./SongRow";
 export default function SongList(props) {
     
     return (
-        <table className="table">
+        <table className="table table-hover">
             <thead className="thead-light">
                 <tr>
                     <th scope="col"></th>
