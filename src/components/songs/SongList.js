@@ -25,7 +25,8 @@ export default function SongList(props) {
                             isFavoriteSong={props.favoriteSongList.includes(song.songName)} 
                             onAddToFavorites={() => props.onAddToFavorites(song.songName)}
                             onRemoveFromFavorites={() => props.onRemoveFromFavorites(song.songName)} 
-                            onStopPlaying={() => props.onStopPlaying(song.fileName)}/>
+                            onStopPlaying={() => props.onStopPlaying(song.fileName)}
+                            onPlayNextSong={() => props.onPlayNextSong(song.fileName)}/>
                 ))}
             </tbody>
         </table>

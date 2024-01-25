@@ -190,6 +190,34 @@ export default function MusicPlayer(props) {
         currentAudio = null;
     }
 
+    const onPlayNextSong = (fileName) => {
+        console.log(fileName);
+        console.log(currentSong);
+        if(!currentAudio) return;
+        if(currentSong !== fileName) return;
+        let tempUploadedFiles = uploadedFiles.map(file => file);
+        let fileToPlay = "";
+        for(let i = 0; i < tempUploadedFiles.length; i++) {
+            let currentFile = tempUploadedFiles[i];
+            if(currentFile.name == fileName) {
+                if(i == tempUploadedFiles.length - 1) { // current song is the last one on the playlist
+                    fileToPlay = tempUploadedFiles[0];
+                } else {
+                    fileToPlay = tempUploadedFiles[i + 1];
+                }
+                break;
+            }
+        }
+        setIsPlaying(false);
+        setCurrentSong("");
+        currentAudio.pause();
+        currentAudio = new Audio(URL.createObjectURL(fileToPlay));
+        currentAudio.play();
+        setIsPlaying(true);
+        setCurrentSong(fileToPlay.name);
+
+    }
+
     const onPlaySingle = (fileName) => {
         if(currentSong === fileName) {
             if(currentAudio.paused){
@@ -274,7 +302,8 @@ export default function MusicPlayer(props) {
                        favoriteSongList={favoriteSongList.map(song => song.songName)}
                        onAddToFavorites={(songName) => onAddToFavorites(songName)} 
                        onRemoveFromFavorites={(songName) => onRemoveFromFavorites(songName)}
-                       onStopPlaying={(fileName) => onStopPlaying(fileName)}/>
+                       onStopPlaying={(fileName) => onStopPlaying(fileName)} 
+                       onPlayNextSong={(fileName) => onPlayNextSong(fileName)}/>
              <MusicUploadForm onAddSongToPlaylist={(event, songName, artistName, fileName) => onAddSongToPlaylist(event, songName, artistName, fileName)}
                               onUploadSong={onUploadSong} 
                               onError={(message) => onError(message)}
