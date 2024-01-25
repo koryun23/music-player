@@ -34,7 +34,6 @@ export default function MusicUploadForm(props) {
         }
         setFileName(enteredFileName);
         props.onUploadSong(event);
-
     }
 
     const addSongToPlaylist = (event) => {

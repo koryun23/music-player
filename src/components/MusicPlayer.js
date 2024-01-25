@@ -15,6 +15,8 @@ export default function MusicPlayer(props) {
     const [uploadedFiles, setUploadedFiles] = useState([]);
 
     const [songList, setSongList] = useState([]);
+    const [favoriteSongList, setFavoriteSongList] = useState([]);
+
     const [currentQueue, setCurrentQueue] = useState([]);
     
     const [filteredSongList, setFilteredSongList] = useState([]);
@@ -153,6 +155,32 @@ export default function MusicPlayer(props) {
         setSongList(songListTemp);
     }
 
+    const onAddToFavorites = (songName) => {
+        let tempFavorites = favoriteSongList.map(song => song);
+        let tempAllSongs = songList.map(song => song);
+
+        for(let i = 0; i < tempAllSongs.length; i++) {
+            if(songName === tempAllSongs[i].songName) {
+                tempFavorites.push(tempAllSongs[i]);
+                break;
+            }
+        }
+        setFavoriteSongList(tempFavorites);
+    }
+
+    const onRemoveFromFavorites = (songName) => {
+        let tempFavorites = favoriteSongList.map(song => song);
+        let index = -1;
+        for(let i = 0; i < tempFavorites.length; i++) {
+            if(tempFavorites[i].songName === songName) {
+                index = i;
+                break;
+            }
+        }
+        tempFavorites.splice(index, 1);
+        setFavoriteSongList(tempFavorites)
+    }
+
     const onPlaySingle = (fileName, onEnded) => {
         if(currentSong === fileName) {
             if(currentAudio.paused){
@@ -234,7 +262,10 @@ export default function MusicPlayer(props) {
                        currentQueue={currentQueue} 
                        onPlaySingle={(fileName) => onPlaySingle(fileName)} 
                        fileName={currentSong}
-                       isPlaying={isPlaying}/>
+                       isPlaying={isPlaying} 
+                       favoriteSongList={favoriteSongList.map(song => song.songName)}
+                       onAddToFavorites={(songName) => onAddToFavorites(songName)} 
+                       onRemoveFromFavorites={(songName) => onRemoveFromFavorites(songName)}/>
              <MusicUploadForm onAddSongToPlaylist={(event, songName, artistName, fileName) => onAddSongToPlaylist(event, songName, artistName, fileName)}
                               onUploadSong={onUploadSong} 
                               onError={(message) => onError(message)}

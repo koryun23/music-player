@@ -30,7 +30,6 @@ const navbarStyle = {
 }
 
 export default function Toolbar(props) {
-    
     return (
         <div className="container-fluid">
             <div className="toolbar row">

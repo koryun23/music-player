@@ -34,18 +34,18 @@ export default function SongRow(props) {
                 {props.trackNumber}
             </td>
             <td>
-                    <button className="option">
-                        <FontAwesomeIcon icon={faHeart}/>
-                    </button>
-                    <button className="option">
-                        <FontAwesomeIcon icon={faCheck}/>
-                    </button>
-                    <button className="option">
-                        <FontAwesomeIcon icon={faShare}/>
-                    </button>
-                    <button className="option">
-                        <FontAwesomeIcon icon={faCaretDown} />
-                    </button>
+                <button className="option" onClick={props.isFavoriteSong ? props.onRemoveFromFavorites : props.onAddToFavorites}>
+                    <FontAwesomeIcon icon={faHeart} style={props.isFavoriteSong ? {color: "red"} : {}}/>
+                </button>
+                <button className="option">
+                    <FontAwesomeIcon icon={faCheck}/>
+                </button>
+                <button className="option">
+                    <FontAwesomeIcon icon={faShare}/>
+                </button>
+                <button className="option">
+                    <FontAwesomeIcon icon={faCaretDown} />
+                </button>
             </td>
         </tr>
     );
