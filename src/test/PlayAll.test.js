@@ -7,7 +7,7 @@ it('renders correctly', () => {
     expect(tree).toMatchSnapshot();
 })
 
-it('dropdown works correctly', () => {
+it('play all dropdown works correctly', () => {
     const component = renderer.create(<PlayAll />)
     let tree = component.toJSON();
     console.log(tree.props);

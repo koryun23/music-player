@@ -478,6 +478,47 @@ exports[`song list renders correctly 1`] = `
 </table>
 `;
 
+exports[`song list renders correctly 2`] = `
+<table
+  className="table table-hover"
+>
+  <thead
+    className="thead-light"
+  >
+    <tr>
+      <th
+        scope="col"
+      />
+      <th
+        scope="col"
+      >
+        Song Name
+      </th>
+      <th
+        scope="col"
+      >
+        Artist Name
+      </th>
+      <th
+        scope="col"
+      >
+        Track
+      </th>
+      <th
+        scope="col"
+      />
+      <th
+        scope="col"
+      />
+      <th
+        scope="col"
+      />
+    </tr>
+  </thead>
+  <tbody />
+</table>
+`;
+
 exports[`song row renders correctly 1`] = `
 <table
   className="table table-hover"

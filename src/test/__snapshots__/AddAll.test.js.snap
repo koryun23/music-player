@@ -1,5 +1,170 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`add all dropdown works correctly 1`] = `
+<div
+  className="add-all-button dropdown dropdown-div"
+  onClick={[Function]}
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    className="button-description btn btn-light dropdown-toggle"
+    data-toggle="dropdown"
+    id="dropdownMenuButton"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-plus fa-lg add-icon"
+      data-icon="plus"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <b>
+      Add All
+    </b>
+  </button>
+  <div
+    className="dropdown-menu show"
+  >
+    <a
+      className="dropdown-item"
+      href="/"
+      onClick={[Function]}
+    >
+      Add All Sequentially
+    </a>
+    <a
+      className="dropdown-item"
+      href="/"
+      onClick={[Function]}
+    >
+      Add All Shuffled
+    </a>
+  </div>
+</div>
+`;
+
+exports[`add all dropdown works correctly 2`] = `
+<div
+  className="add-all-button dropdown dropdown-div"
+  onClick={[Function]}
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    className="button-description btn btn-light dropdown-toggle"
+    data-toggle="dropdown"
+    id="dropdownMenuButton"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-plus fa-lg add-icon"
+      data-icon="plus"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <b>
+      Add All
+    </b>
+  </button>
+  <div
+    className="dropdown-menu"
+  >
+    <a
+      className="dropdown-item"
+      href="/"
+      onClick={[Function]}
+    >
+      Add All Sequentially
+    </a>
+    <a
+      className="dropdown-item"
+      href="/"
+      onClick={[Function]}
+    >
+      Add All Shuffled
+    </a>
+  </div>
+</div>
+`;
+
+exports[`add all renders correctly 1`] = `
+<div
+  className="add-all-button dropdown dropdown-div"
+  onClick={[Function]}
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    className="button-description btn btn-light dropdown-toggle"
+    data-toggle="dropdown"
+    id="dropdownMenuButton"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-plus fa-lg add-icon"
+      data-icon="plus"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <b>
+      Add All
+    </b>
+  </button>
+  <div
+    className="dropdown-menu"
+  >
+    <a
+      className="dropdown-item"
+      href="/"
+      onClick={[Function]}
+    >
+      Add All Sequentially
+    </a>
+    <a
+      className="dropdown-item"
+      href="/"
+      onClick={[Function]}
+    >
+      Add All Shuffled
+    </a>
+  </div>
+</div>
+`;
+
 exports[`renders correctly 1`] = `
 <div
   className="add-all-button dropdown dropdown-div"
