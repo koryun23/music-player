@@ -68,12 +68,14 @@ export default function MusicPlayer(props) {
     };
 
     const addAllSequential = (cb) => {
+        console.log("Adding all songs to a queue sequentially.");
         let queue = songList.map(song => song);
         setCurrentQueue(queue);
         cb();
     }
 
     const addAllShuffled = () => {
+        console.log("Adding all songs to a queue in shuffled order.");
         let array = songList.map(song => song);
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));

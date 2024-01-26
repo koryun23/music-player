@@ -38,6 +38,7 @@ export default function MusicUploadForm(props) {
 
     const addSongToPlaylist = (event) => {
         event.preventDefault();
+        console.log("Adding a song to the playlist");
         if(!fileName) {
             props.onError("Please upload the song");
             props.removeError();
