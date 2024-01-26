@@ -8,33 +8,12 @@ import { Container, Nav, NavDropdown, Navbar, Form, Button, Col, Row } from "rea
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const playAllStyle = {
-    border: "1px solid black",
-    borderRadius: "10px",
-    position: "relative",
-}
-
-const addAllStyle = {
-    border: "1px solid black",
-    borderRadius: "10px"
-}
-
-const trackNumberStyle = {
-    border: "1px solid black",
-    borderRadius: "10px"
-}
-
-const navbarStyle = {
-    display: "grid",
-    gridTemplateColumns: "auto auto auto"
-}
-
 export default function Toolbar(props) {
     return (
         <div className="container-fluid">
             <div className="toolbar row">
                 <div className="col-md-2 col-sm-4 col-xs-12 custom-column">
-                    <PlayAll onPlayAll={props.onPlayAll} dropdownOpen={props.playAllDropdownIsOpen}/>
+                    <PlayAll onPlayAll={props.onPlayAll}/>
                 </div>
                 <div className="col-md-2 col-sm-4 col-xs-12 custom-column">
                     <AddAll onAddAll={props.onAddAll}/>

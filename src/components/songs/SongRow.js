@@ -6,13 +6,6 @@ import { Button, ButtonGroup, Dropdown, DropdownButton, DropdownItem } from "rea
 
 export default function SongRow(props) {
 
-    const [songName, setSongName] = useState(props.songName);
-    const [artistName, setArtistName] = useState(props.artistName);
-    const [trackNumber, setTrackNumber] = useState(props.trackNumber);
-    const [fileName, setFileName] = useState(props.fileName);
-
-    const [showDropdown, setShowDropdown] = useState(false);
-
     const row = (
         <tr>
             <th scope="row">
