@@ -4,6 +4,15 @@ The aim of the task was to create a music player interface with ReactJS, which i
 # Technologies Used
 The technologies used to accomplish the task were HTML, CSS, JS, ReactJS
 
+# How to Run 
+In order to run the application locally, follow the steps below:
+* Clone the project with the command ```git clone https://github.com/koryun23/music-player.git```
+* Open the terminal in your local machine and navigate to the directory of the project
+* Type in the command ```npm i react```
+* After completion, type in the command ```npm start```.
+
+In order to run tests, type in the command ```npm run test```
+
 # Structure of the Application
 The main component - MusicPlayer, has three major children-components - ```Toolbar```, ```SongList```, ```SongUploadForm```.
 
