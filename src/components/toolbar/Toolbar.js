@@ -2,7 +2,6 @@ import React from "react";
 import "../../css/toolbar/Toolbar.css";
 import PlayAll from "./PlayAll";
 import AddAll from "./AddAll";
-import TrackNumber from "./TrackNumber";
 import Filter from "./Filter";
 import { Container, Nav, NavDropdown, Navbar, Form, Button, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

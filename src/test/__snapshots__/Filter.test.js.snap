@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<form>
+  <div
+    className="filter-form"
+  >
+    <input
+      className="filter-input-field"
+      onChange={[Function]}
+      placeholder=" Filter"
+      style={
+        Object {
+          "fontFamily": "Arial, FontAwesome",
+        }
+      }
+      type="text"
+      value=""
+    />
+  </div>
+</form>
+`;

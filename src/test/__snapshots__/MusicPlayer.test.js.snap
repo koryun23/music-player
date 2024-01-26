@@ -1,0 +1,270 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="music-player"
+>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="toolbar row"
+    >
+      <div
+        className="col-md-2 col-sm-4 col-xs-12 custom-column"
+      >
+        <div
+          className="dropdown dropdown-div play-all-button"
+          onClick={[Function]}
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            className="button-description btn btn-light dropdown-toggle"
+            data-toggle="dropdown"
+            id="dropdownMenuButton"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-play fa-lg play-icon"
+              data-icon="play"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+            <b>
+              Play All
+            </b>
+          </button>
+          <div
+            aria-labelledby="dropdownMenuButton"
+            className="dropdown-menu"
+          >
+            <a
+              className="dropdown-item"
+              href="/"
+              onClick={[Function]}
+            >
+              Repeat After Queue Ends
+            </a>
+            <a
+              className="dropdown-item"
+              href="/"
+              onClick={[Function]}
+            >
+              Play Queue Only Once
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-2 col-sm-4 col-xs-12 custom-column"
+      >
+        <div
+          className="add-all-button dropdown dropdown-div"
+          onClick={[Function]}
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            className="button-description btn btn-light dropdown-toggle"
+            data-toggle="dropdown"
+            id="dropdownMenuButton"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-plus fa-lg add-icon"
+              data-icon="plus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+            <b>
+              Add All
+            </b>
+          </button>
+          <div
+            className="dropdown-menu"
+          >
+            <a
+              className="dropdown-item"
+              href="/"
+              onClick={[Function]}
+            >
+              Add All Sequentially
+            </a>
+            <a
+              className="dropdown-item"
+              href="/"
+              onClick={[Function]}
+            >
+              Add All Shuffled
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-6 col-sm-1 custom-column"
+      />
+      <div
+        className="col-md-2 col-sm-3 col-xs-12 custom-column"
+      >
+        <form>
+          <div
+            className="filter-form"
+          >
+            <input
+              className="filter-input-field"
+              onChange={[Function]}
+              placeholder=" Filter"
+              style={
+                Object {
+                  "fontFamily": "Arial, FontAwesome",
+                }
+              }
+              type="text"
+              value=""
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        className="col-sm-1"
+      />
+    </div>
+  </div>
+  <table
+    className="table table-hover"
+  >
+    <thead
+      className="thead-light"
+    >
+      <tr>
+        <th
+          scope="col"
+        />
+        <th
+          scope="col"
+        >
+          Song Name
+        </th>
+        <th
+          scope="col"
+        >
+          Artist Name
+        </th>
+        <th
+          scope="col"
+        >
+          Track
+        </th>
+        <th
+          scope="col"
+        />
+        <th
+          scope="col"
+        />
+        <th
+          scope="col"
+        />
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+  <form
+    className="music-upload-form"
+  >
+    <div
+      className="form form-group"
+    >
+      <input
+        className="file-name"
+        name="fileName"
+        placeholder="No File Selected"
+        readOnly={true}
+        type="text"
+        value=""
+      />
+      <small>
+        Supported file formats: .mp3, .wav
+      </small>
+    </div>
+    <div
+      className="form form-group"
+    >
+      <input
+        className="song-name"
+        name="songName"
+        onChange={[Function]}
+        placeholder="Song Name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form form-group"
+    >
+      <input
+        className="artist-name"
+        name="artistName"
+        onChange={[Function]}
+        placeholder="Artist Name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form form-group"
+    >
+      <input
+        className="btn btn-submit"
+        name="submit"
+        onChange={[Function]}
+        type="file"
+      />
+      <button
+        className="music-upload-button"
+        onClick={[Function]}
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-plus fa-lg "
+          data-icon="plus"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+`;
